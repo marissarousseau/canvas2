@@ -1,4 +1,4 @@
-:root
+/*:root
 {
   --cdm-primary-background-color: black;
   --cdm-secondary-background-color: #404040;
@@ -9,10 +9,13 @@
   --cdm-scrollbar-color: #CCC;
   --cdm-primary-button-color: #404040;
   --cdm-secondary-button-color: #606060 !important;
-}
+}*/
 
 /* general */
-html,
+html
+{
+  background-color: black !important;
+}
 body,
 .ic-app-main-content,
 .ic-Dashboard-header__layout,

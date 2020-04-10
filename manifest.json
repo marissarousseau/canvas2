@@ -15,17 +15,25 @@
     "128": "res/icon128.png"
   },
 
-  "browser_action" :
+  "background":
   {
-    "default_title" : "Dark Mode for Canvas",
-    "default_popup" : "popup.html"
+    "scripts":
+    ["js/background.js"]
   },
 
+  "permissions": [
+    "tabs",
+    "*://*.instructure.com/*",
+    "activeTab",
+    "webNavigation"
+  ],
 
   "content_scripts":
   [
     {
-      "css": ["css/canvas.css"],
+      "css" : ["css/canvas.css"],
+      "js" : ["js/canvas.js"],
+      "run-at" : "document_start",
       "matches": ["https://*.instructure.com/*"]
     }
   ]
