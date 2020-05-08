@@ -1,3 +1,0 @@
-ic-DashboardCard__header_hero = color of top of dashboard cards
-
-need to find a way to get a list of courses the student is taking in order to customize each one
