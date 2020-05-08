@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title> About Content Scripts </title>
+  </head>
+  <body>
+    <article>
+      <h1> About Content Scripts </h1>
+      <section>
+        <h2> What are content scripts? </h2>
+        <p> Dark Mode for Canvas uses a combination of Javascript and CSS to add theme options  to a few different educational websites. The main site that the extension is built for, as you might have guessed, is the Canvas Instructure learning management system. </p>
+        <p> Content scripts allow web extensions to inject arbitrary code into a given website if it matches the URL scheme in /manifest.json. This means that Dark Mode for Canvas cannot and will not ever be able to access any other websites or insert code to any other websites that do not match the URL schemes in /manifest.json. </p>
+      </section>
+      <section>
+        <h2> What types of content scripts are used? </h2>
+        <p> Each site that is supported by the extension has two content scripts, a Javascript file and a CSS file. The Javascript file modifes the website-in-question's theme-color attribute. The CSS file does most of the work, actually modifying most of the user-facing changes to the website. </p>
+      </section>
+      <section>
+        <h2> Are these content scripts going to steal my passwords? </h2>
+        <p> No, the extension's content scripts have no way to take your passwords or other personal information. The site only modifes the CSS and Javascript code of a website by injecting arbitrary code. It does not and will never collect personal information </p>
+      </section>
+      <section>
+        <h2> Are you trying to add support for another website? </h2>
+        <p> If you are trying to add support for a completely new educational website, make sure to add the content script information (such as URL scheme and path to scripts) in the /mainfest.json file. If you are adding support for another Canvas organization, add its URL scheme to the already existing content script information for Canvas Instructure in /manifest.json. </p>
+        <p> When creating the CSS/JS files for the content scripts, follow the same standard file paths of already existing files. This helps maintain consistency and organization of the extension's layout.</p>
+      </section>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,95 @@
+/* when adding theme options, don't remove this html CSS. Keep it as is */
+:root
+{
+  --canvas-primary-background-color: black;
+  --canvas-primary-text-color: white;
+  --canvas-primary-button-color: #303030;
+  --canvas-secondary-button-color: #606060;
+}
+html,
+body,
+header,
+.ic-Dashboard-header__layout,
+div.event-details::after
+{
+  background: var(--canvas-primary-background-color) !important;
+  background-color: var(--canvas-primary-background-color) !important;
+  color: var(--canvas-primary-text-color) !important;
+}
+
+a.ic-app-header__logomark
+{
+  background-color: var(--canvas-primary-background-color) !important;
+}
+
+a
+{
+  color: var(--canvas-primary-text-color) !important;
+}
+
+header,
+.ic-Dashboard-header__layout,
+h2.todo-list-header
+{
+  text-align: center !important;
+}
+
+#right-side .shared-space h2
+{
+  margin-left: 64px !important; /* had to align it using margins b/c text-align didn't work :( */
+}
+
+svg path
+{
+  fill: var(--canvas-primary-text-color) !important;
+}
+
+.ic-app-header__menu-list-item--active a div svg path
+{
+  fill: black !important;
+}
+
+.Button.button-sidebar-wide,
+#ColorPicker__Apply,
+.fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk
+{
+  background-color: var(--canvas-primary-button-color) !important;
+  color: var(--canvas-primary-text-color) !important;
+  text-align: center !important;
+  border: 2px solid white !important;
+  transition: background-color .2s !important;
+}
+
+.Button.button-sidebar-wide:hover
+#ColorPicker__Apply:hover,
+.fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk:hover
+{
+  background-color: var(--canvas-secondary-button-color) !important;
+}
+
+.ic-DashboardCard,
+.ic-DashboardCard__header_content
+{
+  background: var(--canvas-primary-button-color) !important;
+}
+
+.ic-DashboardCard__header-subtitle,
+.ic-DashboardCard__header-term
+{
+  color: var(--canvas-primary-text-color) !important;
+}
+
+.fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd
+{
+  -webkit-filter: invert(100%) hue-rotate(180deg)!important;
+}
+
+
+/* weird shit going on here with the color picker menu on dashboard - the close button inverts whenever the Cancel button isn't and vice versa */
+span.fQfxa_eoCh svg,
+.esvoZ_bGBk.esvoZ_drOs.esvoZ_eXrk.cGqzL_bGBk.DashboardCardMenu__MovementIcon,
+#ColorPicker__Apply,
+.fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk
+{
+  -webkit-filter: invert(100%) hue-rotate(180deg)!important;
+}

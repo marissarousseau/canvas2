@@ -1,39 +1,32 @@
 {
+
   "manifest_version": 2,
 
-  "name": "Dark Mode for Canvas",
+  "name": "Canvas2",
 
   "version": "2.0.0",
 
-  "version_name":"v2.0.0",
-
-  "description": "Extension that brings theme options to Canvas Instructure. Customize your learning experience.",
+  "description": "Development version of redesigned Dark Mode for Canvas web extension.",
 
   "icons":
   {
-    "48": "res/icon48.png",
-    "128": "res/icon128.png"
+    "48": "icon/48.png",
+    "128": "icon/128.png",
+    "512": "icon/512.png"
   },
 
-  "background":
+  "browser_action" :
   {
-    "scripts":
-    ["js/background.js"]
+    "default_title" : "Canvas2",
+    "default_popup" : "/browser-action/popup.html"
   },
 
-  "permissions": [
-    "tabs",
-    "*://*.instructure.com/*",
-    "activeTab",
-    "webNavigation"
-  ],
 
   "content_scripts":
   [
     {
-      "css" : ["css/canvas.css"],
-      "js" : ["js/canvas.js"],
-      "run-at" : "document_start",
+      "css": ["/content-scripts/canvas/main.css"],
+      "js": ["/content-scripts/canvas/main.js"],
       "matches": ["https://*.instructure.com/*"]
     }
   ]
