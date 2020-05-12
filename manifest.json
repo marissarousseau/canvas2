@@ -25,7 +25,6 @@
   "content_scripts":
   [
     {
-      "css": ["/content-scripts/canvas/main.css"],
       "js": ["/content-scripts/canvas/main.js"],
       "matches": ["https://*.instructure.com/*"]
     }
