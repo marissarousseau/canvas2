@@ -26,7 +26,8 @@
   [
     {
       "js": ["/content-scripts/canvas/main.js"],
-      "matches": ["https://*.instructure.com/*"]
+      "matches": ["https://*.instructure.com/*"],
+      "run-at":["document_start"]
     }
   ]
 
