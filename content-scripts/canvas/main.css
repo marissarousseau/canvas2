@@ -6,82 +6,111 @@
   --canvas-primary-button-color: #303030;
   --canvas-secondary-button-color: #606060;
 }
+/**
+  Background and text colors
+  Sets the default for all important classes
+ */
 html,
 body,
 header,
 .ic-Dashboard-header__layout,
 div.event-details::after
 {
-  background: var(--canvas-primary-background-color) !important;
-  background-color: var(--canvas-primary-background-color) !important;
-  color: var(--canvas-primary-text-color) !important;
+  background: var(--canvas-primary-background-color);
+  background-color: var(--canvas-primary-background-color);
+  color: var(--canvas-primary-text-color);
 }
 
+/**
+  Set the background color of the logo in the top-left
+ */
 a.ic-app-header__logomark
 {
-  background-color: var(--canvas-primary-background-color) !important;
+  background-color: var(--canvas-primary-background-color);
 }
 
+/**
+  Set the text color of all hyperlinks
+ */
 a
 {
-  color: var(--canvas-primary-text-color) !important;
+  color: var(--canvas-primary-text-color) ;
 }
 
+/**
+  Align all the text in headers, the dashboard header and todo-lists to the center
+ */
 header,
 .ic-Dashboard-header__layout,
 h2.todo-list-header
 {
-  text-align: center !important;
+  text-align: center ;
 }
 
+/**
+  Center text ("Recent feedback") by expanding it to 100% and centering the text
+ */
 #right-side .shared-space h2
 {
-  margin-left: 64px !important; /* had to align it using margins b/c text-align didn't work :( */
+  width: 100%;
+  text-align: center;
 }
 
-svg path
-{
-  fill: var(--canvas-primary-text-color) !important;
-}
-
-.ic-app-header__menu-list-item--active a div svg path
-{
-  fill: black !important;
-}
-
+/**
+  Recolor button below "recent feedback", color picker and one other element
+ */
 .Button.button-sidebar-wide,
 #ColorPicker__Apply,
 .fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk
 {
-  background-color: var(--canvas-primary-button-color) !important;
-  color: var(--canvas-primary-text-color) !important;
-  text-align: center !important;
-  border: 2px solid white !important;
-  transition: background-color .2s !important;
+  background-color: var(--canvas-primary-button-color) ;
+  color: var(--canvas-primary-text-color) ;
+  text-align: center ;
+  border: 2px solid white ;
+  transition: background-color .2s ;
 }
 
-.Button.button-sidebar-wide:hover
+/**
+  Adjust the background color of the button, color picker and one other element on hover
+ */
+.Button.button-sidebar-wide:hover,
 #ColorPicker__Apply:hover,
 .fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk:hover
 {
-  background-color: var(--canvas-secondary-button-color) !important;
+  background-color: var(--canvas-secondary-button-color) ;
+}
+
+/**
+  Make the SVG logos white
+ */
+svg path
+{
+  fill: var(--canvas-primary-text-color) ;
+}
+
+/**
+  Make the active SVG the correct color
+ */
+.ic-app-header__menu-list-item--active a div svg path
+{
+  fill: var(--canvas-primary-text-color) ;
 }
 
 .ic-DashboardCard,
 .ic-DashboardCard__header_content
 {
-  background: var(--canvas-primary-button-color) !important;
+  background: var(--canvas-primary-button-color) ;
 }
 
 .ic-DashboardCard__header-subtitle,
 .ic-DashboardCard__header-term
 {
-  color: var(--canvas-primary-text-color) !important;
+  color: var(--canvas-primary-text-color) ;
 }
 
 .fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd
 {
-  -webkit-filter: invert(100%) hue-rotate(180deg)!important;
+  -webkit-filter: invert(100%) hue-rotate(180deg);
 }
 
 
@@ -91,5 +120,5 @@ span.fQfxa_eoCh svg,
 #ColorPicker__Apply,
 .fOyUs_bGBk.fOyUs_fKyb.fOyUs_cuDs.fOyUs_cBHs.fOyUs_eWbJ.fOyUs_fmDy.fOyUs_eeJl.fOyUs_cBtr.fOyUs_fuTR.fOyUs_cnfU.fQfxa_bGBk
 {
-  -webkit-filter: invert(100%) hue-rotate(180deg)!important;
+  -webkit-filter: invert(100%) hue-rotate(180deg);
 }
