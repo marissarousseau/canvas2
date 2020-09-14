@@ -32,6 +32,12 @@ function injectVars(color)
   root.style.setProperty("--ic-brand-global-nav-menu-item__badge-bgd", color);
   root.style.setProperty("--ic-brand-global-nav-menu-item__badge-text", "white");
   root.style.setProperty("--ic-brand-global-nav-logo-bgd", color);
+
+  browser.storage.sync.get(["textcolor", "backgroundcolor"]).then(result =>{
+    root.style.setProperty("--canvas-primary-background-color", result.textcolor || "black")
+    root.style.setProperty("--canvas-primary-background-color", result.backgroundcolor || "white")
+  })
+
 }
 
 injectVars("black"); /* or #15202B */
