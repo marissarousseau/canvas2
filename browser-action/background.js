@@ -15,8 +15,8 @@ function startBackgroundCheckingProcess() {
  * browsers (see https://github.com/fregante/content-scripts-register-polyfill), or creating a separate background.js (and manifest.json?) for chromium-based browsers
  */
 function checkDarkModeEnabled(){
-    getAll().then(results => {
-        if (results.darkmode && !contentScriptContainer.contentScript) {
+    getAll().then(result => {
+        if (result.darkmode && !contentScriptContainer.contentScript) {
             browser.contentScripts.register({
                 matches: ['https://*.instructure.com/*'],
                 css: [{file: '/content-scripts/canvas/main.css'}],
@@ -25,7 +25,7 @@ function checkDarkModeEnabled(){
             }).then(value => {
                 contentScriptContainer.contentScript = value;
             });
-        } else if (!results.darkmode &&  contentScriptContainer.contentScript) {
+        } else if (!result.darkmode && contentScriptContainer.contentScript) {
             contentScriptContainer.contentScript.unregister().then(() => {
                 contentScriptContainer.contentScript = undefined;
             });

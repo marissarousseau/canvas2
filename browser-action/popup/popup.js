@@ -4,10 +4,10 @@ const submitButton = document.querySelector('#submit');
 const enabledCheckbox = document.querySelector('#enabled');
 
 function setDefaults() {
-    getAll().then(results => {
-        bgField.value = results.backgroundcolor;
-        txtField.value = results.textcolor;
-        enabledCheckbox.checked = results.darkmode;
+    getAll().then(result => {
+        bgField.value = result.backgroundcolor;
+        txtField.value = result.textcolor;
+        enabledCheckbox.checked = result.darkmode;
     });
 
 }
