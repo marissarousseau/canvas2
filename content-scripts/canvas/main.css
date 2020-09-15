@@ -9,7 +9,8 @@
 
 /*
   Background and text colors
-  Sets the default for all important elements
+  Sets the default for all important elements, while trying to not-touch those elements that require their color to remain
+  the same (like the color picker and dashboard cards)
  */
 html,
 body,

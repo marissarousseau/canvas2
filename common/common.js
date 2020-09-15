@@ -4,9 +4,20 @@ const defaultTextColor = '#ffffff';
 const defaultDarkMode = true;
 const keys = ['backgroundcolor', 'textcolor', 'darkmode'];
 
+class CanvasDarkModeConfiguration {
+    backgroundcolor;
+    textcolor;
+    darkmode;
+}
+
+/**
+ * Will return a promise that resolves to a CanvasDarkModeConfiguration,
+ * containing either the saved values or the default value for each respective field
+ * @returns {Promise<CanvasDarkModeConfiguration>}
+ */
 async function getAll() {
     const values = await storage.get(keys);
-    const realValues = {};
+    const realValues = new CanvasDarkModeConfiguration();
     realValues.backgroundcolor = values.backgroundcolor || defaultBackgroundColor;
     realValues.textcolor = values.textcolor || defaultTextColor;
     if (values.darkmode !== undefined) {
@@ -19,8 +30,21 @@ async function getAll() {
     });
 }
 
-function setAll(bgColor = defaultBackgroundColor, txtColor = defaultTextColor, dm = defaultDarkMode) {
-    storage.set({backgroundcolor: bgColor});
-    storage.set({textcolor: txtColor});
-    storage.set({darkmode: dm});
+/**
+ * Set the stored values. If they are left out, no changes are made
+ * @param bgColor A hex string describing the primary background color
+ * @param txtColor A hex string describing the primary text color
+ * @param dm A boolean describing whether or not the dark mode should be enabled
+ */
+
+function set(bgColor, txtColor, dm) {
+    if (bgColor) {
+        storage.set({backgroundcolor: bgColor});
+    }
+    if (txtColor) {
+        storage.set({textcolor: txtColor});
+    }
+    if (dm) {
+        storage.set({darkmode: dm});
+    }
 }

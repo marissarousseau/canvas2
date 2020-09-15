@@ -13,7 +13,7 @@ function setDefaults() {
 }
 
 async function saveAll() {
-    setAll(bgField.value, txtField.value, enabledCheckbox.checked)
+    set(bgField.value, txtField.value, enabledCheckbox.checked)
     // browser.tabs.reload(); // to reload the page automatically when settings are saved. Should probably not be enabled
 }
 
