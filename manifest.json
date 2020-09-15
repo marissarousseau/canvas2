@@ -22,10 +22,12 @@
   },
   "permissions": [
     "storage",
+    "tabs",
     "https://*.instructure.com/*"
   ],
   "background": {
     "scripts": [
+      "/common/browser-polyfill.js",
       "/common/common.js",
       "/browser-action/background.js"
     ]
@@ -34,6 +36,7 @@
     {
       "all_frames": true,
       "js": [
+        "/common/browser-polyfill.js",
         "/common/common.js",
         "/content-scripts/canvas/main.js"
       ],
