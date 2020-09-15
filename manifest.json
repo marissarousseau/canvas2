@@ -26,7 +26,7 @@
   "content_scripts": [
     {
       "css": [
-        "/content-scripts/canvas/main.css"
+        "/content-scripts/canvas/canvas.css"
       ],
       "js": [
         "/content-scripts/canvas/main.js"
