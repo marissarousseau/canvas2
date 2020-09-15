@@ -25,10 +25,8 @@
   ],
   "content_scripts": [
     {
-      "css": [
-        "/content-scripts/canvas/canvas.css"
-      ],
       "js": [
+        "/common/common.js",
         "/content-scripts/canvas/main.js"
       ],
       "matches": [

@@ -1,4 +1,3 @@
-console.log("bruh")
 function setProp(name, value, element = document.documentElement) {
     element.style.setProperty(name, value);
 }
@@ -43,6 +42,7 @@ function injectVars(backgroundColor = defaultBackgroundColor, textColor = defaul
 function loadFromStorage() {
     storage.get(keys).then(result => {
         const darkmode = result.darkmode === undefined ? defaultDarkMode : result.darkmode;
+        console.log(darkmode);
         if (darkmode) {
             const bgColor = result.backgroundcolor || defaultBackgroundColor;
             const txtColor = result.textcolor || defaultTextColor;
@@ -50,5 +50,4 @@ function loadFromStorage() {
         }
     });
 }
-console.log("Bruh");
 loadFromStorage();
