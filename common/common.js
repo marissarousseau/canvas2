@@ -4,6 +4,9 @@ const defaultTextColor = '#ffffff';
 const defaultDarkMode = true;
 const keys = ['backgroundcolor', 'textcolor', 'darkmode'];
 
+/**
+ * A class that contains all the configuration options for this extension
+ */
 class CanvasDarkModeConfiguration {
     backgroundcolor;
     textcolor;

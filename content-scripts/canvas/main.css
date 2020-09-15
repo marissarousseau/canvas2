@@ -146,17 +146,17 @@ svg path {
     background: var(--canvas-primary-button-color) !important;
 }
 
-/*.fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd*/
-/*{*/
-/*  -webkit-filter: invert(100%) hue-rotate(180deg);*/
-/*}*/
+.fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd
+{
+  -webkit-filter: invert(100%) hue-rotate(180deg);
+}
 
 
 /*!* weird shit going on here with the color picker menu on dashboard - the close button inverts whenever the Cancel button isn't and vice versa *!*/
-/*span.fQfxa_eoCh svg,*/
-/*.esvoZ_bGBk.esvoZ_drOs.esvoZ_eXrk.cGqzL_bGBk.DashboardCardMenu__MovementIcon,*/
-/*#ColorPicker__Apply,*/
-/*.ToDoSidebarItem__Close span button*/
-/*{*/
-/*  -webkit-filter: invert(100%) hue-rotate(180deg);*/
-/*}*/
+span.fQfxa_eoCh svg,
+.esvoZ_bGBk.esvoZ_drOs.esvoZ_eXrk.cGqzL_bGBk.DashboardCardMenu__MovementIcon,
+#ColorPicker__Apply,
+.ToDoSidebarItem__Close span button
+{
+  -webkit-filter: invert(100%) hue-rotate(180deg);
+}
