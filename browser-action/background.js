@@ -6,13 +6,13 @@ function startBackgroundCheckingProcess() {
 
 /**
  * Right now, neither 'browser' or 'browser.contentScripts' exists.
- * The appropriate name for 'browser' is 'chromium' for chromium-based browsers, and 'browser.contentScripts' does not
+ * The appropriate name for 'browser' is 'chrome' for chromium-based browsers, and 'browser.contentScripts' does not
  * exist.
- * Solutions to the first problem could be: use a polyfill that makes 'browser' resolve to 'chromium' in chromium-based browsers (see https://github.com/mozilla/webextension-polyfill),
+ * Solutions to the first problem could be: use a polyfill that makes 'browser' resolve to 'chrome' in chromium-based browsers (see https://github.com/mozilla/webextension-polyfill),
  * creating a separate background.js (and manifest.json?) for chromium-based browsers
  *
- * Solutions to the second problem could be: use a polyfill that adds an equivalent of 'browser.contentScripts' for chromium-based (see https://github.com/fregante/content-scripts-register-polyfill)
- * browsers, or creating a separate background.js (and manifest.json?) for chromium-based browsers
+ * Solutions to the second problem could be: use a polyfill that adds an equivalent of 'browser.contentScripts' for chromium-based
+ * browsers (see https://github.com/fregante/content-scripts-register-polyfill), or creating a separate background.js (and manifest.json?) for chromium-based browsers
  */
 function checkDarkModeEnabled(){
     getAll().then(results => {
