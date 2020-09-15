@@ -40,7 +40,7 @@ function injectVars(backgroundColor = defaultBackgroundColor, textColor = defaul
 }
 
 function loadFromStorage() {
-    storage.get(keys).then(result => {
+    getAll().then(result => {
         const darkmode = result.darkmode === undefined ? defaultDarkMode : result.darkmode;
         if (darkmode) {
             const bgColor = result.backgroundcolor || defaultBackgroundColor;

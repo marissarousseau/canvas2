@@ -13,6 +13,18 @@ class CanvasDarkModeConfiguration {
     darkmode;
 }
 
+function extractConfiguration(inputValues) {
+    const realValues = new CanvasDarkModeConfiguration();
+    realValues.backgroundcolor = inputValues.backgroundcolor || defaultBackgroundColor;
+    realValues.textcolor = inputValues.textcolor || defaultTextColor;
+    if (inputValues.darkmode !== undefined) {
+        realValues.darkmode = inputValues.darkmode;
+    } else {
+        realValues.darkmode = defaultDarkMode;
+    }
+    return realValues;
+}
+
 /**
  * Will return a promise that resolves to a CanvasDarkModeConfiguration,
  * containing either the saved values or the default value for each respective field
@@ -20,16 +32,24 @@ class CanvasDarkModeConfiguration {
  */
 async function getAll() {
     const values = await storage.get(keys);
-    const realValues = new CanvasDarkModeConfiguration();
-    realValues.backgroundcolor = values.backgroundcolor || defaultBackgroundColor;
-    realValues.textcolor = values.textcolor || defaultTextColor;
-    if (values.darkmode !== undefined) {
-        realValues.darkmode = values.darkmode;
-    } else {
-        realValues.darkmode = defaultDarkMode;
-    }
+    const configuration = extractConfiguration(values);
     return new Promise((resolve) => {
-        resolve(realValues);
+        resolve(configuration);
+    });
+}
+
+/**
+ * Storage works differently in chrome: it does not support Promises, so the result has to be "promistified". A polyfill
+ * or some other approach will be needed to make this work seamlessly between chrome and firefox
+ * @returns {Promise<CanvasDarkModeConfiguration>}
+ */
+
+async function getAllChrome() {
+    return new Promise((resolve) => {
+        storage.get(keys, (values) => {
+            const configuration = extractConfiguration(values);
+            resolve(configuration);
+        });
     });
 }
 
