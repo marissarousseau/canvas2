@@ -10,7 +10,7 @@
   },
   "browser_action": {
     "default_title": "Canvas2",
-    "default_popup": "/browser-action/popup.html"
+    "default_popup": "/browser-action/popup/popup.html"
   },
   "browser_specific_settings": {
     "gecko": {
@@ -18,7 +18,7 @@
     }
   },
   "options_ui": {
-    "page": "/browser-action/popup.html"
+    "page": "/browser-action/popup/popup.html"
   },
   "permissions": [
     "storage",
@@ -32,6 +32,7 @@
   },
   "content_scripts": [
     {
+      "all_frames": true,
       "js": [
         "/common/common.js",
         "/content-scripts/canvas/main.js"

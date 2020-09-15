@@ -3,8 +3,6 @@ const txtField = document.querySelector('#text-color');
 const submitButton = document.querySelector('#submit');
 const enabledCheckbox = document.querySelector('#enabled');
 
-let contentScript;
-
 function setDefaults() {
     getAll().then(results => {
         bgField.value = results.backgroundcolor;
@@ -15,9 +13,7 @@ function setDefaults() {
 }
 
 async function saveAll() {
-    storage.set({backgroundcolor: bgField.value});
-    storage.set({textcolor: txtField.value});
-    storage.set({darkmode: enabledCheckbox.checked});
+    setAll(bgField.value, txtField.value, enabledCheckbox.checked)
     // browser.tabs.reload(); // to reload the page automatically when settings are saved. Should probably not be enabled
 }
 
