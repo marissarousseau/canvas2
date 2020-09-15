@@ -9,7 +9,8 @@ function startBackgroundCheckingProcess() {
  * The appropriate name for 'browser' is 'chrome' for chromium-based browsers, and 'browser.contentScripts' does not
  * exist.
  * Solutions to the first problem could be: use a polyfill that makes 'browser' resolve to 'chrome' in chromium-based browsers (see https://github.com/mozilla/webextension-polyfill),
- * creating a separate background.js (and manifest.json?) for chromium-based browsers
+ * creating a separate background.js (and manifest.json?) for chromium-based browsers, a homebrew polyfill that only performs the tasks required for this project
+ * is possible too
  *
  * Solutions to the second problem could be: use a polyfill that adds an equivalent of 'browser.contentScripts' for chromium-based
  * browsers (see https://github.com/fregante/content-scripts-register-polyfill), or creating a separate background.js (and manifest.json?) for chromium-based browsers
