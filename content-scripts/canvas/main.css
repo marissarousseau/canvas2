@@ -26,7 +26,7 @@ span[dir="ltr"],
 span[dir="ltr"] > * :not(.ColorPicker__ColorBlock):not(.icon-check):not(.ColorPicker__ColorPreview),
 #right-side,
 .ctf-container,
-.ctf-container * {
+.ctf-container :not(.ctf-emoji-button) {
     background: var(--canvas-primary-background-color) !important;
     background-color: var(--canvas-primary-background-color) !important;
     color: var(--canvas-primary-text-color) !important;
