@@ -21,8 +21,15 @@
     "page": "/browser-action/popup.html"
   },
   "permissions": [
-    "storage"
+    "storage",
+    "https://*.instructure.com/*"
   ],
+  "background": {
+    "scripts": [
+      "/common/common.js",
+      "/browser-action/background.js"
+    ]
+  },
   "content_scripts": [
     {
       "js": [
