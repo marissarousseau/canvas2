@@ -4,7 +4,7 @@ const submitButton = document.querySelector('#submit');
 const enabledCheckbox = document.querySelector('#enabled');
 
 function setDefaults() {
-    getAll().then(result => {
+    getConfiguration().then(result => {
         bgField.value = result.backgroundcolor;
         txtField.value = result.textcolor;
         enabledCheckbox.checked = result.darkmode;
@@ -13,7 +13,11 @@ function setDefaults() {
 }
 
 async function saveAll() {
-    set(bgField.value, txtField.value, enabledCheckbox.checked)
+    const configuration = {};
+    configuration.backgroundcolor = bgField.value;
+    configuration.textcolor = txtField.value;
+    configuration.darkmode = enabledCheckbox.checked;
+    saveConfiguration(configuration);
     // browser.tabs.reload(); // to reload the page automatically when settings are saved. Should probably not be enabled
 }
 

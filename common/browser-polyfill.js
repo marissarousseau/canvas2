@@ -77,7 +77,6 @@ if (typeof browser == 'undefined' || Object.getPrototypeOf(browser) !== Object.p
     polyFillBrowser.contentScripts = {
         // The callback is only used by webextension-polyfill
         async register(contentScriptOptions) {
-            console.log('Registering');
             const {
                 js = [],
                 css = [],

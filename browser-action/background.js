@@ -1,6 +1,7 @@
 const contentScriptContainer = {};
 
 function startBackgroundCheckingProcess() {
+    //TODO change this to message/event based instead of polling
     setInterval(checkDarkModeEnabled, 1000);
 }
 
@@ -16,8 +17,13 @@ function startBackgroundCheckingProcess() {
  * browsers (see https://github.com/fregante/content-scripts-register-polyfill), or creating a separate background.js (and manifest.json?) for chromium-based browsers
  */
 function checkDarkModeEnabled(){
-    getAll().then(result => {
-        if (result.darkmode && !contentScriptContainer.contentScript) {
+    getConfiguration().then(configuration => {
+        if (configuration.darkmode && !contentScriptContainer.contentScript) {
+            /*
+             This is here (and not in popup.js) because the content scripts only live as long as the environment
+             that called them, and the popup's environment ends each time it is closed
+             */
+            // TODO add a function call to request permission to add content scripts to the specified domain(s) if we don't have permission for that domain yet
             polyFillBrowser.contentScripts.register({
                 matches: ['https://*.instructure.com/*'],
                 css: [{file: '/content-scripts/canvas/main.css'}],
@@ -26,7 +32,7 @@ function checkDarkModeEnabled(){
             }).then(value => {
                 contentScriptContainer.contentScript = value;
             });
-        } else if (!result.darkmode && contentScriptContainer.contentScript) {
+        } else if (!configuration.darkmode && contentScriptContainer.contentScript) {
             contentScriptContainer.contentScript.unregister().then(() => {
                 contentScriptContainer.contentScript = undefined;
             });

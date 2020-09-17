@@ -40,12 +40,9 @@ function injectVars(backgroundColor = defaultBackgroundColor, textColor = defaul
 }
 
 function loadFromStorage() {
-    getAll().then(result => {
-        const darkmode = result.darkmode === undefined ? defaultDarkMode : result.darkmode;
-        if (darkmode) {
-            const bgColor = result.backgroundcolor || defaultBackgroundColor;
-            const txtColor = result.textcolor || defaultTextColor;
-            injectVars(bgColor, txtColor);
+    getConfiguration().then(result => {
+        if (result.darkmode) {
+            injectVars(result.backgroundcolor, result.textcolor);
         }
     });
 }

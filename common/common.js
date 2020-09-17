@@ -2,7 +2,6 @@ const storage = polyFillBrowser.storage.local;
 const defaultBackgroundColor = '#000000';
 const defaultTextColor = '#ffffff';
 const defaultDarkMode = true;
-const keys = ['backgroundcolor', 'textcolor', 'darkmode'];
 
 /**
  * A class that contains all the configuration options for this extension
@@ -13,26 +12,34 @@ class CanvasDarkModeConfiguration {
     darkmode;
 }
 
-function extractConfiguration(inputValues) {
-    const realValues = new CanvasDarkModeConfiguration();
-    realValues.backgroundcolor = inputValues.backgroundcolor || defaultBackgroundColor;
-    realValues.textcolor = inputValues.textcolor || defaultTextColor;
-    if (inputValues.darkmode !== undefined) {
-        realValues.darkmode = inputValues.darkmode;
-    } else {
-        realValues.darkmode = defaultDarkMode;
-    }
-    return realValues;
-}
-
 /**
- * Will return a promise that resolves to a CanvasDarkModeConfiguration,
+ * Will return a promise that resolves to a {@link CanvasDarkModeConfiguration},
  * containing either the saved values or the default value for each respective field
  * @returns {Promise<CanvasDarkModeConfiguration>}
  */
-async function getAll() {
-    const values = await storage.get(keys);
-    const configuration = extractConfiguration(values);
+async function getConfiguration() {
+    const values = await storage.get(['settings']);
+    let configuration;
+    if (values.settings) {
+        configuration = JSON.parse(values.settings);
+    } else {
+        configuration = {};
+    }
+
+    /*
+    Set the default values if they are missing
+     */
+    if (!configuration.backgroundcolor) {
+        configuration.backgroundcolor = defaultBackgroundColor;
+    }
+    if (!configuration.textcolor) {
+        configuration.textcolor = defaultTextColor;
+    }
+    // Cannot use "!configuration.darkmode" here, because it is a boolean!
+    if (configuration.darkmode === undefined) {
+        configuration.darkmode = defaultDarkMode;
+    }
+
     return new Promise((resolve) => {
         resolve(configuration);
     });
@@ -40,19 +47,20 @@ async function getAll() {
 
 /**
  * Set the stored values. If they are left out, no changes are made
- * @param bgColor A hex string describing the primary background color
- * @param txtColor A hex string describing the primary text color
- * @param dm A boolean describing whether or not the dark mode should be enabled
+ * @param config a {@link CanvasDarkModeConfiguration} containing the settings to be saved
  */
 
-function set(bgColor, txtColor, dm) {
-    if (bgColor) {
-        storage.set({backgroundcolor: bgColor});
+function saveConfiguration(config) {
+    // Alternatively to throwing errors: insert default values
+    if (!config.backgroundcolor) {
+        throw new Error("No background color defined in CanvasDarkModeConfiguration argument!")
     }
-    if (txtColor) {
-        storage.set({textcolor: txtColor});
+    if (!config.textcolor) {
+        throw new Error("No text color defined in CanvasDarkModeConfiguration argument!")
     }
-    if (dm !== undefined) {
-        storage.set({darkmode: dm});
+    // Cannot use "!configuration.darkmode" here, because it is a boolean!
+    if (config.darkmode === undefined) {
+        throw new Error("No dark mode enabled defined in CanvasDarkModeConfiguration argument!")
     }
+    storage.set({settings: JSON.stringify(config)});
 }
