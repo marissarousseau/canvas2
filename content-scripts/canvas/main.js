@@ -3,6 +3,7 @@ function setProp(name, value, element = document.documentElement) {
 }
 
 function injectVars(backgroundColor = defaultBackgroundColor, textColor = defaultTextColor) {
+    setProp('--canvas-primary-text-color', textColor);
     setProp('--canvas-primary-background-color', backgroundColor);
     setProp('--ic-brand-primary-darkened-5', backgroundColor);
     setProp('--ic-brand-primary-darkened-10', backgroundColor);
@@ -46,4 +47,5 @@ function loadFromStorage() {
         }
     });
 }
+
 loadFromStorage();

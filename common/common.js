@@ -14,7 +14,7 @@ class CanvasDarkModeConfiguration {
 
 /**
  * Will return a promise that resolves to a {@link CanvasDarkModeConfiguration},
- * containing either the saved values or the default value for each respective field
+ * containing either the saved values or the default value for each respective field, but never an undefined value
  * @returns {Promise<CanvasDarkModeConfiguration>}
  */
 async function getConfiguration() {
