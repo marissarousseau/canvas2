@@ -11,20 +11,21 @@
   Background and text colors
   Sets the default for all important elements, while trying to not-touch those elements that require their color to remain
   the same (like the color picker and dashboard cards)
+  Note: using :not(class, class) (not(class or class)) is only supported on safari, so we have to use :not(class):not(class) (not class and not class) instead
  */
 html,
 body,
 header,
 .navigation-tray-container,
 #content,
-#content :not(.ic-DashboardCard__header_hero):not(.ic-DashboardCard__header-button-bg):not(.ic-DashboardCard__header-button):not(.ic-DashboardCard__header-button-bg):not(.icon-more),
+#content :not(.ic-DashboardCard__header_hero):not(.ic-DashboardCard__header-button):not(.ic-DashboardCard__header-button-bg):not(.icon-more):not(img):not(.al-hover-container):not(.fOyUs_bGBk):not(.ui-icon),
 #content button:not(.ic-DashboardCard__header-button),
 #breadcrumbs,
 .ui-dialog,
 .ui-dialog *,
 #NicknameInput,
 span[dir="ltr"],
-span[dir="ltr"] > * :not(.ColorPicker__ColorBlock):not(.icon-check):not(.ColorPicker__ColorPreview),
+span[dir="ltr"] :not(.ColorPicker__ColorBlock):not(.icon-check):not(.ColorPicker__ColorPreview):not(.fOyUs_bGBk):not(.bbhNB_eYKj),
 #right-side,
 .ctf-container,
 .ctf-container :not(.ctf-emoji-button) {
@@ -148,7 +149,7 @@ svg path {
 
 .fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd
 {
-  -webkit-filter: invert(100%) hue-rotate(180deg);
+    -webkit-filter: invert(100%) hue-rotate(180deg);
 }
 
 
@@ -158,5 +159,5 @@ span.fQfxa_eoCh svg,
 #ColorPicker__Apply,
 .ToDoSidebarItem__Close span button
 {
-  -webkit-filter: invert(100%) hue-rotate(180deg);
+    -webkit-filter: invert(100%) hue-rotate(180deg);
 }
