@@ -25,6 +25,9 @@
     "tabs",
     "https://*.instructure.com/*"
   ],
+  "optional_permissions": [
+    "<all_urls>"
+  ],
   "background": {
     "scripts": [
       "/common/browser-polyfill.js",

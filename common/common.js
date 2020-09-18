@@ -2,6 +2,7 @@ const storage = polyFillBrowser.storage.local;
 const defaultBackgroundColor = '#000000';
 const defaultTextColor = '#ffffff';
 const defaultDarkMode = true;
+const defaultMatches = ['https://*.instructure.com/*', 'https://bruh.com/']
 
 /**
  * A class that contains all the configuration options for this extension
@@ -10,6 +11,7 @@ class CanvasDarkModeConfiguration {
     backgroundcolor;
     textcolor;
     darkmode;
+    matches;
 }
 
 /**
@@ -40,6 +42,10 @@ async function getConfiguration() {
         configuration.darkmode = defaultDarkMode;
     }
 
+    if (configuration.matches === undefined || configuration.matches.length === 0){
+        configuration.matches = defaultMatches.slice();
+    }
+
     return new Promise((resolve) => {
         resolve(configuration);
     });
@@ -53,14 +59,17 @@ async function getConfiguration() {
 function saveConfiguration(config) {
     // Alternatively to throwing errors: insert default values
     if (!config.backgroundcolor) {
-        throw new Error("No background color defined in CanvasDarkModeConfiguration argument!")
+        throw new Error('No background color defined in CanvasDarkModeConfiguration argument!');
     }
     if (!config.textcolor) {
-        throw new Error("No text color defined in CanvasDarkModeConfiguration argument!")
+        throw new Error('No text color defined in CanvasDarkModeConfiguration argument!');
     }
     // Cannot use "!configuration.darkmode" here, because it is a boolean!
     if (config.darkmode === undefined) {
-        throw new Error("No dark mode enabled defined in CanvasDarkModeConfiguration argument!")
+        throw new Error('No dark mode enabled defined in CanvasDarkModeConfiguration argument!');
     }
+    polyFillBrowser.runtime.sendMessage(
+        {action: "update-configuration", configuration: config}
+    );
     storage.set({settings: JSON.stringify(config)});
 }

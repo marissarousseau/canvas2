@@ -125,4 +125,6 @@ if (typeof browser == 'undefined' || Object.getPrototypeOf(browser) !== Object.p
 } else {
     polyFillBrowser.storage = browser.storage;
     polyFillBrowser.contentScripts = browser.contentScripts;
+    polyFillBrowser.runtime = browser.runtime;
+    polyFillBrowser.permissions = browser.permissions;
 }
