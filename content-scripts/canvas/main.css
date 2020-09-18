@@ -18,16 +18,15 @@ body,
 header,
 .navigation-tray-container,
 #content,
-    /* #content :not(.ic-DashboardCard__header_hero):not(.ic-DashboardCard__header-button):not(.ic-DashboardCard__header-button-bg),*/
 #content > :not(.ic-dashboard-app),
-#content > :not(.ic-dashboard-app) :not(.icon-more):not(img):not(.al-hover-container):not(.fOyUs_bGBk):not(.ui-icon),
+#content > :not(.ic-dashboard-app) :not(.icon-more):not(img):not(.al-hover-container):not(.bpunF_cJVF):not(.ui-icon),
 #content > .ic-dashboard-app .ic-Dashboard-header__layout,
 #breadcrumbs,
 .ui-dialog,
 .ui-dialog *,
 #NicknameInput,
 span[dir="ltr"],
-span[dir="ltr"] :not(.ColorPicker__ColorBlock):not(.icon-check):not(.ColorPicker__ColorPreview):not(.fOyUs_bGBk):not(.bbhNB_eYKj),
+span[dir="ltr"] :not(.ColorPicker__ColorBlock):not(.icon-check):not(.ColorPicker__ColorPreview):not(.dqmEK_cOtA):not(.dqmEK_dBdm):not(.bbhNB_eYKj),
 #right-side,
 .ctf-container,
 .ctf-container :not(.ctf-emoji-button) {
@@ -149,15 +148,17 @@ svg path {
     background: var(--canvas-secondary-background-color) !important;
 }
 
-.fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd {
+
+
+/*.fOyUs_bGBk.fOyUs_dnJm.fOyUs_tIxX.fOyUs_EMjX.fOyUs_kXoP.fOyUs_UeJS.fOyUs_bxuL.dqmEK_caGd {
     -webkit-filter: invert(100%) hue-rotate(180deg);
-}
+}*/
 
 
 /*!* weird shit going on here with the color picker menu on dashboard - the close button inverts whenever the Cancel button isn't and vice versa *!*/
-span.fQfxa_eoCh svg,
+/*span.fQfxa_eoCh svg,
 .esvoZ_bGBk.esvoZ_drOs.esvoZ_eXrk.cGqzL_bGBk.DashboardCardMenu__MovementIcon,
 #ColorPicker__Apply,
 .ToDoSidebarItem__Close span button {
     -webkit-filter: invert(100%) hue-rotate(180deg);
-}
+}*/
