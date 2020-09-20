@@ -7,6 +7,7 @@ const enabledCheckbox = document.querySelector('#enabled');
 const enabledDomainList = document.querySelector('#enabled-domains');
 const addDomainInput = document.querySelector('#domain-input');
 const addDomainSubmit = document.querySelector('#domain-submit');
+const domainTemplate = document.querySelector('#domain-template').content;
 
 const confCont = {};
 
@@ -15,16 +16,25 @@ function setValues(configuration = confCont.config) {
     txtField.value = configuration.textcolor;
     enabledCheckbox.checked = configuration.darkmode;
 
+    // Save the title element
+    const title = enabledDomainList.querySelector("#enabled-domains-title");
+
     // Remove all children
     while (enabledDomainList.firstChild) {
-        enabledDomainList.removeChild(enabledDomainList.firstChild);
+            enabledDomainList.removeChild(enabledDomainList.firstChild);
     }
+
+    enabledDomainList.appendChild(title);
 
     // Add an entry for each domain
     for (const allowedUrl of configuration.matches) {
-        const li = document.createElement('li');
-        li.textContent = allowedUrl;
-        enabledDomainList.appendChild(li);
+        const template = domainTemplate.cloneNode(true);
+        const domainName = template.querySelector('#domain-name');
+        const checkBox = template.querySelector('#domain-checkbox');
+
+        domainName.textContent = allowedUrl;
+        checkBox.domainname = allowedUrl;
+        enabledDomainList.appendChild(template);
     }
 
 }
@@ -65,7 +75,7 @@ async function saveAll() {
         const notAllowedMatches = [];
         let count = 0;
         for (const match of matches) {
-            console.log("Mane");
+            console.log('Mane');
             const permission = {};
             permission.origins = [match];
             polyFillBrowser.permissions.request(permission).then(accepted => {
