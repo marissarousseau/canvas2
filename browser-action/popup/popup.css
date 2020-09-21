@@ -1,12 +1,25 @@
+body {
+    width: 300px;
+}
+
 .container {
     display: flex;
     flex-direction: row;
-    max-width: 220px;
     font-size: 12px;
+}
+
+@media (min-width: 300px) {
+    .container {
+        max-width: 300px;
+    }
 }
 
 p, li, input, button {
     font-size: 12px;
+}
+
+input[type=submit] {
+    width: 50%;
 }
 
 .full-height {
@@ -28,6 +41,8 @@ p, li, input, button {
 
 .col-left {
     flex: 3;
+    display: flex;
+    align-items: center;
 }
 
 .col-left > *, .col-right > * {
