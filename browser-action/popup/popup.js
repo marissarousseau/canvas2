@@ -51,7 +51,6 @@ function loadConfiguration() {
         confCont.config = result;
         setValues();
     });
-
 }
 
 function addDomain() {
@@ -65,8 +64,9 @@ function addDomain() {
                 confCont.config.matches.push(addDomainInput.value);
             }
             console.log(confCont.config.matches);
-            saveAll();
-            loadConfiguration();
+            saveAll().then(() => {
+                loadConfiguration();
+            });
         });
     }
 }
