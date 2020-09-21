@@ -57,64 +57,26 @@ function loadConfiguration() {
 function addDomain() {
     // TODO add input validation
     if (!confCont.config.matches.includes(addDomainInput.value)) {
-        confCont.config.matches.push(addDomainInput.value);
-        setValues();
+        const match = addDomainInput.value;
+        const permission = {};
+        permission.origins = [match];
+        polyFillBrowser.permissions.request(permission).then(accepted => {
+            if (accepted) {
+                confCont.config.matches.push(addDomainInput.value);
+            }
+            console.log(confCont.config.matches);
+            saveAll();
+            loadConfiguration();
+        });
     }
 }
 
-async function saveAll(requestNewPerms = true) {
+async function saveAll() {
     const configuration = confCont.config;
     configuration.backgroundcolor = bgField.value;
     configuration.textcolor = txtField.value;
     configuration.darkmode = enabledCheckbox.checked;
-
-    /* A promise that checks if we have permission to add content scripts
-    to all requested domains, and asks for permissions if we don't have it yet.
-    Ugly and no async-await because the permissions model doesn't allow us to call
-    permissions.request() from an async/await context, but does allow us to do it from
-    a resolving promise (????).
-    Should maybe try to make a single list of all domains that are to be requested,
-    so only a single "allow" button has to be pressed
-     */
-    const requestPermissions = new Promise((resolve => {
-        if (requestNewPerms) {
-            const matches = configuration.matches;
-            const allowedMatches = [];
-            const notAllowedMatches = [];
-            let count = 0;
-            for (const match of matches) {
-                const permission = {};
-                permission.origins = [match];
-                polyFillBrowser.permissions.request(permission).then(accepted => {
-                    if (accepted) {
-                        allowedMatches.push(match);
-                    } else {
-                        notAllowedMatches.push(match);
-                    }
-                }).then(() => {
-                    count++;
-                    if (count === matches.length) {
-                        const lists = {};
-                        lists.allowedMatches = allowedMatches;
-                        lists.notAllowedMatches = notAllowedMatches;
-                        resolve(lists);
-                    }
-                });
-            }
-        } else {
-            const lists = {};
-            lists.allowedMatches = configuration.matches;
-            resolve(lists);
-        }
-    }));
-
-
-    // TODO print error for non-allowed domains
-    requestPermissions.then((result) => {
-        configuration.matches = result.allowedMatches;
-        saveConfiguration(configuration);
-        loadConfiguration();
-    });
+    saveConfiguration(configuration);
     // browser.tabs.reload(); // to reload the page automatically when settings are saved. Should probably not be enabled
 }
 
@@ -122,17 +84,15 @@ async function removeSelected() {
     const configuration = confCont.config;
     for (const child of enabledDomainList.children) {
         const checkBox = child.querySelector('#domain-checkbox');
-        if (checkBox) {
-            const set = checkBox.checked;
-            if (set) {
-                configuration.matches.splice(configuration.matches.indexOf(checkBox.domainname), 1);
-                const permission = {};
-                permission.origins = [checkBox.domainname];
-                await polyFillBrowser.permissions.remove(permission);
-            }
+        if (checkBox && checkBox.checked) {
+            configuration.matches.splice(configuration.matches.indexOf(checkBox.domainname), 1);
+            const permission = {};
+            permission.origins = [checkBox.domainname];
+            await polyFillBrowser.permissions.remove(permission);
         }
     }
     await saveAll(false);
+    loadConfiguration();
 }
 
 addDomainSubmit.addEventListener('click', addDomain);
