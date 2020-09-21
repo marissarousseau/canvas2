@@ -2,7 +2,7 @@ const storage = polyFillBrowser.storage.local;
 const defaultBackgroundColor = '#000000';
 const defaultTextColor = '#ffffff';
 const defaultDarkMode = true;
-const defaultMatches = ['https://*.instructure.com/*', 'https://bruh.com/']
+const defaultMatches = ['https://*.instructure.com/*'];
 
 /**
  * A class that contains all the configuration options for this extension
@@ -42,7 +42,7 @@ async function getConfiguration() {
         configuration.darkmode = defaultDarkMode;
     }
 
-    if (configuration.matches === undefined || configuration.matches.length === 0){
+    if (configuration.matches === undefined || configuration.matches.length === 0) {
         configuration.matches = defaultMatches.slice();
     }
 
@@ -69,7 +69,7 @@ function saveConfiguration(config) {
         throw new Error('No dark mode enabled defined in CanvasDarkModeConfiguration argument!');
     }
     polyFillBrowser.runtime.sendMessage(
-        {action: "update-configuration", configuration: config}
+        {action: 'update-configuration', configuration: config}
     );
     storage.set({settings: JSON.stringify(config)});
 }

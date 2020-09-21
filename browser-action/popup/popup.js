@@ -75,11 +75,9 @@ async function saveAll() {
         const notAllowedMatches = [];
         let count = 0;
         for (const match of matches) {
-            console.log('Mane');
             const permission = {};
             permission.origins = [match];
             polyFillBrowser.permissions.request(permission).then(accepted => {
-                console.log(count, accepted);
                 if (accepted) {
                     allowedMatches.push(match);
                 } else {
@@ -100,8 +98,8 @@ async function saveAll() {
 
     // TODO print error for non-allowed domains
     requestPermissions.then((result) => {
-        console.log('Resolved');
         configuration.matches = result.allowedMatches;
+        console.log(configuration);
         saveConfiguration(configuration);
         loadConfiguration();
     });

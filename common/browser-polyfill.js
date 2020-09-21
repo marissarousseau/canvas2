@@ -122,6 +122,17 @@ if (typeof browser == 'undefined' || Object.getPrototypeOf(browser) !== Object.p
             return Promise.resolve(registeredContentScript);
         }
     };
+
+    polyFillBrowser.permissions = {};
+    polyFillBrowser.permissions.request = function (permission) {
+        return new Promise((resolve) => {
+            chrome.permissions.request(permission, (granted) => {
+                resolve(granted);
+            });
+        });
+    };
+
+    polyFillBrowser.runtime = chrome.runtime;
 } else {
     polyFillBrowser.storage = browser.storage;
     polyFillBrowser.contentScripts = browser.contentScripts;
