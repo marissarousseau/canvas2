@@ -1,34 +1,52 @@
 {
-
   "manifest_version": 2,
-
   "name": "Canvas2",
-
   "version": "2.0.0",
-
   "description": "Development version of redesigned Dark Mode for Canvas web extension.",
-
-  "icons":
-  {
+  "icons": {
     "48": "icon/48.png",
     "128": "icon/128.png",
     "512": "icon/512.png"
   },
-
-  "browser_action" :
-  {
-    "default_title" : "Canvas2",
-    "default_popup" : "/browser-action/popup.html"
+  "browser_action": {
+    "default_title": "Canvas2",
+    "default_popup": "/browser-action/popup/popup.html"
   },
-
-
-  "content_scripts":
-  [
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "canvas2@test.com"
+    }
+  },
+  "options_ui": {
+    "page": "/browser-action/popup/popup.html"
+  },
+  "permissions": [
+    "storage",
+    "tabs",
+    "https://*.instructure.com/*"
+  ],
+  "optional_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "scripts": [
+      "/common/browser-polyfill.js",
+      "/common/common.js",
+      "/browser-action/background.js"
+    ]
+  },
+  "content_scripts": [
     {
-      "js": ["/content-scripts/canvas/main.js"],
-      "matches": ["https://*.instructure.com/*"],
-      "run-at":["document_start"]
+      "all_frames": true,
+      "js": [
+        "/common/browser-polyfill.js",
+        "/common/common.js",
+        "/content-scripts/canvas/main.js"
+      ],
+      "matches": [
+        "https://*.instructure.com/*"
+      ],
+      "run_at": "document_start"
     }
   ]
-
 }

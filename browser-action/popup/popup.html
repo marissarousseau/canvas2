@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Canvas2 </title>
+    <meta charset="utf-8"/>
+    <link rel="stylesheet" href="/browser-action/popup/popup.css">
+    <template id="domain-template">
+        <div class="container">
+            <div class="col-left" id="domain-name"></div>
+            <div class="col-right align-right">
+                <input type="checkbox" id="domain-checkbox">
+            </div>
+        </div>
+    </template>
+</head>
+
+<body>
+<h2>Canvas2</h2>
+<div class="container">
+    <div class="col-left">
+        Dark mode enabled:
+    </div>
+    <div class="col-right centering">
+        <input id="enabled" type="checkbox">
+    </div>
+</div>
+<!-- While input[type=color] is nice, it closes the popup window in Firefox... (but it works flawlessly in chrome) -->
+<div class="container">
+    <div class="col-left">
+        Background color:
+    </div>
+    <div class="col-right centering">
+        <input type="color" id="background-color">
+    </div>
+</div>
+<div class="container">
+    <div class="col-left">
+        Text color:
+    </div>
+    <div class="col-right centering">
+        <input type="color" id="text-color"></div>
+</div>
+
+<div class="with-top-margin">
+    <div id="enabled-domains">
+        <div class="container" id="enabled-domains-title">
+            <div class="col-left">
+                Enabled domains
+            </div>
+            <div class="col-right align-right">
+                Remove?
+            </div>
+        </div>
+    </div>
+</div>
+<p><input id="remove-selected" type="submit" value="Remove selected"></p>
+<p>Add a domain:</p>
+<p><input id="domain-input" placeholder="https://domain.name/"></p>
+<p><input class="full-height" type="submit" id="domain-submit" value="Add domain"></p>
+
+<p><input class="with-top-margin" id="submit" type="submit" value="Save settings"></p>
+<script src="/common/browser-polyfill.js"></script>
+<script src="/common/common.js"></script>
+<script src="/browser-action/popup/popup.js"></script>
+</body>
+</html>

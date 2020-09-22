@@ -1,37 +1,51 @@
-function injectVars(color)
-{
-  let root = document.documentElement;
-
-  root.style.setProperty("--ic-brand-primary-darkened-5", color);
-  root.style.setProperty("--ic-brand-primary-darkened-10", color);
-  root.style.setProperty("--ic-brand-primary-darkened-15", color);
-  root.style.setProperty("--ic-brand-primary-lightened-5", color);
-  root.style.setProperty("--ic-brand-primary-lightened-10", color);
-  root.style.setProperty("--ic-brand-primary-lightened-15", color);
-  root.style.setProperty("--ic-brand-button--primary-bgd-darkened-5", color);
-  root.style.setProperty("--ic-brand-button--primary-bgd-darkened-15", color);
-  root.style.setProperty("--ic-brand-button--secondary-bgd-darkened-5", color);
-  root.style.setProperty("--ic-brand-button--secondary-bgd-darkened-15", color);
-  root.style.setProperty("--ic-brand-font-color-dark-lightened-15", "white");
-  root.style.setProperty("--ic-brand-font-color-dark-lightened-30", "white");
-  root.style.setProperty("--ic-link-color-darkened-10", "white");
-  root.style.setProperty("--ic-link-color-lightened-10", "white");
-  root.style.setProperty("--ic-brand-primary", color);
-  root.style.setProperty("--ic-brand-font-color-dark", "#AAA");
-  root.style.setProperty("--ic-brand-button--primary-bgd", "#303030"); /*might be screwed up*/
-  root.style.setProperty("--ic-brand-button--primary-text", "white");
-  root.style.setProperty("--ic-brand-button--secondary-bgd", "#303030"); /*might be screwed up*/
-  root.style.setProperty("--ic-brand-button--secondary-text", "white");
-  root.style.setProperty("--ic-brand-global-nav-bgd", color);
-  root.style.setProperty("--ic-brand-global-nav-ic-icon-svg-fill", "white");
-  root.style.setProperty("--ic-link-color-darkened-10", "white");
-  root.style.setProperty("--ic-brand-global-nav-ic-icon-svg-fill--active", color);
-  root.style.setProperty("--ic-brand-global-nav-menu-item__text-color", "white");
-  root.style.setProperty("--ic-brand-global-nav-menu-item__text-color--active", color);
-  root.style.setProperty("--ic-brand-global-nav-avatar-border", "white");
-  root.style.setProperty("--ic-brand-global-nav-menu-item__badge-bgd", color);
-  root.style.setProperty("--ic-brand-global-nav-menu-item__badge-text", "white");
-  root.style.setProperty("--ic-brand-global-nav-logo-bgd", color);
+function setProp(name, value, element = document.documentElement) {
+    element.style.setProperty(name, value);
 }
 
-injectVars("black"); /* or #15202B */
+function injectVars(backgroundColor = defaultBackgroundColor, textColor = defaultTextColor) {
+    setProp('--canvas-primary-text-color', textColor);
+    setProp('--canvas-primary-background-color', backgroundColor);
+    setProp('--ic-brand-primary-darkened-5', backgroundColor);
+    setProp('--ic-brand-primary-darkened-10', backgroundColor);
+    setProp('--ic-brand-primary-darkened-15', backgroundColor);
+    setProp('--ic-brand-primary-lightened-5', backgroundColor);
+    setProp('--ic-brand-primary-lightened-10', backgroundColor);
+    setProp('--ic-brand-primary-lightened-15', backgroundColor);
+    setProp('--ic-brand-button--primary-bgd-darkened-5', backgroundColor);
+    setProp('--ic-brand-button--primary-bgd-darkened-15', backgroundColor);
+    setProp('--ic-brand-button--secondary-bgd-darkened-5', backgroundColor);
+    setProp('--ic-brand-button--secondary-bgd-darkened-15', backgroundColor);
+    setProp('--ic-brand-font-color-dark-lightened-15', textColor);
+    setProp('--ic-brand-font-color-dark-lightened-30', textColor);
+    setProp('--ic-link-color-darkened-10', textColor);
+    setProp('--ic-link-color-lightened-10', textColor);
+    setProp('--ic-brand-primary', backgroundColor);
+    setProp('--ic-brand-button--primary-text', textColor);
+    setProp('--ic-brand-button--secondary-text', textColor);
+    setProp('--ic-brand-global-nav-bgd', backgroundColor);
+    setProp('--ic-brand-global-nav-ic-icon-svg-fill', textColor);
+    setProp('--ic-link-color-darkened-10', textColor);
+    setProp('--ic-brand-global-nav-ic-icon-svg-fill--active', backgroundColor);
+    setProp('--ic-brand-global-nav-menu-item__text-color', textColor);
+    setProp('--ic-brand-global-nav-menu-item__text-color--active', backgroundColor);
+    setProp('--ic-brand-global-nav-avatar-border', textColor);
+    setProp('--ic-brand-global-nav-menu-item__badge-bgd', backgroundColor);
+    setProp('--ic-brand-global-nav-menu-item__badge-text', textColor);
+    setProp('--ic-brand-global-nav-logo-bgd', backgroundColor);
+    /*
+    These three are special, might need a different color?
+     */
+    setProp('--ic-brand-font-color-dark', '#AAA');
+    setProp('--ic-brand-button--primary-bgd', '#303030'); /*might be screwed up*/
+    setProp('--ic-brand-button--secondary-bgd', '#303030'); /*might be screwed up*/
+}
+
+function loadFromStorage() {
+    getConfiguration().then(result => {
+        if (result.darkmode) {
+            injectVars(result.backgroundcolor, result.textcolor);
+        }
+    });
+}
+
+loadFromStorage();

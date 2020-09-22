@@ -1,0 +1,63 @@
+:root {
+    --canvas-background-color: black;
+    --canvas-text-color: white;
+}
+body {
+    width: 300px;
+    margin-left: 1em;
+    background-color: var(--canvas-background-color);
+    color: var(--canvas-text-color);
+}
+
+.container {
+    display: flex;
+    flex-direction: row;
+    font-size: 12px;
+}
+
+@media (min-width: 300px) {
+    .container {
+        max-width: 300px;
+    }
+}
+
+p, li, input, button {
+    font-size: 12px;
+}
+
+input[type=submit] {
+    width: 50%;
+}
+
+.full-height {
+    height: 100%;
+    padding: 1px;
+}
+
+.centering {
+    text-align: center;
+}
+
+.align-right {
+    text-align: right;
+}
+
+.col-right {
+    flex: 1;
+}
+
+.col-left {
+    flex: 3;
+    display: flex;
+    align-items: center;
+}
+
+.col-left > *, .col-right > * {
+    margin: 0 auto;
+}
+
+.with-top-margin {
+    margin-top: 1em;
+}
+
+
