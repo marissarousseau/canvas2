@@ -40,6 +40,14 @@ async function checkDarkModeEnabled(configuration) {
                 contentScriptsArray.push(contentScriptContainer);
             }
         }
+
+        for (const container of contentScriptsArray) {
+            if (!configuration.matches.includes(container.match)) {
+                await container.contentScript.unregister();
+                contentScriptsArray.splice(contentScriptsArray.indexOf(container), 1);
+            }
+        }
+
     } else {
         for (const container of contentScriptsArray) {
             await container.contentScript.unregister();
