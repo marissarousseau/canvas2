@@ -2,7 +2,7 @@
 
 const bgField = document.querySelector('#background-color');
 const txtField = document.querySelector('#text-color');
-const submitButton = document.querySelector('#submit');
+const saveButton = document.querySelector('#submit');
 const enabledCheckbox = document.querySelector('#enabled');
 const enabledDomainList = document.querySelector('#enabled-domains');
 const addDomainInput = document.querySelector('#domain-input');
@@ -11,6 +11,11 @@ const domainTemplate = document.querySelector('#domain-template').content;
 const removeSelectedButton = document.querySelector('#remove-selected');
 
 const confCont = {};
+
+function setProp(name, value, element = document.documentElement) {
+    element.style.setProperty(name, undefined);
+    element.style.setProperty(name, value);
+}
 
 function setValues(configuration = confCont.config) {
     bgField.value = configuration.backgroundcolor;
@@ -40,10 +45,11 @@ function setValues(configuration = confCont.config) {
         } else {
             checkBox.remove();
         }
-
         enabledDomainList.appendChild(template);
     }
 
+    setProp('--canvas-text-color', configuration.textcolor);
+    setProp('--canvas-background-color', configuration.backgroundcolor);
 }
 
 function loadConfiguration() {
@@ -77,6 +83,7 @@ async function saveAll() {
     configuration.textcolor = txtField.value;
     configuration.darkmode = enabledCheckbox.checked;
     saveConfiguration(configuration);
+    setValues();
     // browser.tabs.reload(); // to reload the page automatically when settings are saved. Should probably not be enabled
 }
 
@@ -96,6 +103,6 @@ async function removeSelected() {
 }
 
 addDomainSubmit.addEventListener('click', addDomain);
-submitButton.addEventListener('click', saveAll);
+saveButton.addEventListener('click', saveAll);
 removeSelectedButton.addEventListener('click', removeSelected);
 loadConfiguration();

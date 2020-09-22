@@ -1,5 +1,12 @@
+:root {
+    --canvas-background-color: black;
+    --canvas-text-color: white;
+}
 body {
     width: 300px;
+    margin-left: 1em;
+    background-color: var(--canvas-background-color);
+    color: var(--canvas-text-color);
 }
 
 .container {
