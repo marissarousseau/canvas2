@@ -32,7 +32,7 @@ async function checkDarkModeEnabled(configuration) {
                 const contentScriptOptions = {};
                 contentScriptOptions.matches = [match];
                 contentScriptOptions.css = [{file: '/content-scripts/canvas/main.css'}];
-                contentScriptOptions.js = [{file: '/content-scripts/canvas/main.js'}];
+                contentScriptOptions.js = [{file: '/common/browser-polyfill.js'}, {file: '/common/common/js'}, {file: '/content-scripts/canvas/main.js'}];
                 contentScriptOptions.allFrames = true;
                 contentScriptOptions.runAt = 'document_start';
                 contentScriptContainer.match = match;
