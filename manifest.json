@@ -26,7 +26,10 @@
   [
     {
       "js": ["/content-scripts/canvas/main.js"],
-      "matches": ["https://*.instructure.com/*"],
+      "matches": [
+        "https://*.instructure.com/*",
+        "https://canvas.ubc.ca/*"
+      ],
       "run-at":["document_start"]
     }
   ]
